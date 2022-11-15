@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+.imgDiv {
+    width: 17vw;
+    height: 17vw;
+    background-size: cover;
+    background-position: center center;
+    margin: 0.3vw;
+}
+
+.imgDiv:hover {
+    cursor: pointer;
+    width: 17.3vw;
+    height: 17.3vw;
+    margin: 0.15vw;
+}
+
+.photosPage {
+    font-family: 'Open Sans', sans-serif;
+    width: 90vw;
+    margin: auto;
+}
+
+#photos p {
+    margin: 0.3vw;
+    font-size: 20px;
+}
+
+#photos hr {
+    margin: 0.3vw;
+    background-color: DDDDDD;
+}
+
+.tagsText {
+    padding: 0;
+    margin: 5px 3px;
+    flex: 0 0 170px;
+}
+
+.tagsCol {
+    padding: 0;
+    margin: 5px 3px;
+    display: flex;
+    align-items: center;
+    flex: 0 0 0;
+}
+
+.tagButton {
+    background-color: 212529;
+    color: FBF9F9;
+    border-radius: 20px;
+    border: 1px solid #212529;
+    padding: 0px 15px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.tagButton-disabled {
+    background-color: FBF9F9;
+    color: black;
+}
+
+.tagButton:hover {
+    background-color: 585858;
+}
+
+#tags h1 {
+    font-size: 25px;
+    margin: 5px 2px;
+    padding-right: 5px;
+}
+
+.dropdown {
+    text-align: right;
+    padding: 0;
+    margin: 5px 3px;
+    display: flex;
+    align-items: center;
+    flex: 0 0 0;
+}
+
+#sortBySelector {
+    width: 220px;
+}
+
+.mainDivider {
+    margin: 0.3vw;
+    background-color: black;
+    color: black;
+    height: 2px;
+    opacity: 100%;
+}

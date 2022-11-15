@@ -1,0 +1,303 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="../css/photos.css">
+
+<script>
+    tags = {}
+
+    sortBy = "dateUploaded"
+    sortOrder = "descending"
+
+    images = [
+        {
+            src: "../files/ocean.jpg",
+            dateTaken: new Date("2022-01-22"),
+            dateUploaded: new Date("2022-01-26"),
+            tags: ["water", "mountains"]
+        },
+        {
+            src: "../files/mountains.jpg",
+            dateTaken: new Date("2022-01-21"),
+            dateUploaded: new Date("2022-01-26"),
+            tags: ["mountains"]
+        },
+        {
+            src: "../files/tree.jpg",
+            dateTaken: new Date("2022-01-22"),
+            dateUploaded: new Date("2022-01-26"),
+            tags: ["tree"]
+        },
+        {
+            src: "../files/dog.jpg",
+            dateTaken: new Date("2022-01-25"),
+            dateUploaded: new Date("2022-01-26"),
+            tags: ["dog"]
+        },
+        {
+            src: "../files/tree.jpg",
+            dateTaken: new Date("2022-01-25"),
+            dateUploaded: new Date("2022-01-26"),
+            tags: ["tree"]
+        },
+        {
+            src: "../files/dog.jpg",
+            dateTaken: new Date("2022-01-25"),
+            dateUploaded: new Date("2022-01-26"),
+            tags: ["dog"]
+        },
+        {
+            src: "../files/tree.jpg",
+            dateTaken: new Date("2022-01-25"),
+            dateUploaded: new Date("2022-01-26"),
+            tags: ["tree"]
+        },
+        {
+            src: "../files/ocean.jpg",
+            dateTaken: new Date("2022-02-25"),
+            dateUploaded: new Date("2022-02-26"),
+            tags: ["water", "mountains"]
+        },
+        {
+            src: "../files/mountains.jpg",
+            dateTaken: new Date("2022-02-25"),
+            dateUploaded: new Date("2022-02-26"),
+            tags: ["mountains"]
+        },
+        {
+            src: "../files/tree.jpg",
+            dateTaken: new Date("2022-02-26"),
+            dateUploaded: new Date("2022-02-27"),
+            tags: ["tree"]
+        },
+        {
+            src: "../files/dog.jpg",
+            dateTaken: new Date("2022-02-26"),
+            dateUploaded: new Date("2022-02-27"),
+            tags: ["dog"]
+        },
+        {
+            src: "../files/tree.jpg",
+            dateTaken: new Date("2022-02-26"),
+            dateUploaded: new Date("2022-02-27"),
+            tags: ["tree"]
+        },
+        {
+            src: "../files/dog.jpg",
+            dateTaken: new Date("2022-02-26"),
+            dateUploaded: new Date("2022-02-27"),
+            tags: ["dog"]
+        },
+        {
+            src: "../files/tree.jpg",
+            dateTaken: new Date("2022-02-26"),
+            dateUploaded: new Date("2022-02-27"),
+            tags: ["tree"]
+        },
+    ]
+
+    function sortImages(){
+        images.sort((a, b) => {
+            if(sortBy === "dateTaken"){
+                if(sortOrder === "ascending"){
+                    return a.dateTaken - b.dateTaken;
+                } else {
+                    return b.dateTaken - a.dateTaken;
+                }
+            } else {
+                if(sortOrder === "ascending"){
+                    return a.dateUploaded - b.dateUploaded;
+                } else {
+                    return b.dateUploaded - a.dateUploaded;
+                }
+            }
+        })
+    }
+
+    function renderImages(){
+        sortImages();
+
+        var photos = document.getElementById("photos");
+
+        photos.innerHTML = '';
+
+        var prevDate = null;
+        var currGallery = null;
+        images.forEach(img => {
+            var displayImage = false;
+            for(let i = 0; i < img.tags.length; i++){
+                if(tags[img.tags[i]]){
+                    displayImage = true;
+                    break;
+                }
+            }
+
+            if(sortBy == "dateTaken"){
+                sortDate = img.dateTaken;
+            } else {
+                sortDate = img.dateUploaded;
+            }
+
+            if(displayImage){
+                if(prevDate == null || sortDate.getTime() != prevDate.getTime()){
+                    prevDate = sortDate;
+
+                    var dateText = document.createElement("p");
+                    dateText.innerHTML = sortDate.toString().substring(4, 15);
+                    photos.appendChild(dateText);
+
+                    var line = document.createElement("hr");
+                    photos.appendChild(line);
+
+
+                    var container = document.createElement("div");
+                    container.classList.add("container-fluid");
+                    photos.appendChild(container);
+
+                    currGallery = document.createElement("div");
+                    currGallery.classList.add("row");
+                    container.appendChild(currGallery);
+                }
+
+                var imgDiv = document.createElement("div");
+                imgDiv.classList.add("imgDiv");
+                imgDiv.style.backgroundImage = "url("+img.src+")";
+                currGallery.appendChild(imgDiv);
+            }
+        });
+    }
+
+    function tagClick(tag){
+        var button = event.target;
+        if(tags[button.innerHTML]){
+            tags[button.innerHTML] = false;
+            button.classList.add("tagButton-disabled");
+        } else {
+            tags[button.innerHTML]= true;
+            button.classList.remove("tagButton-disabled");
+        }
+    
+        renderImages();
+    }
+
+    function getTags(){
+        var tagMap = {};
+
+        images.forEach(img => {
+            img.tags.forEach(tag => {
+                if(!(tag in tagMap)){
+                    tagMap[tag] = 1;
+                } else {
+                    tagMap[tag] = tagMap[tag]+1;
+                }
+
+            })
+        })
+
+        var tagsArray = [];
+        for(tag in tagMap){
+            tagsArray.push([tag, tagMap[tag]]);
+        }
+        tagsArray.sort((a, b) => {
+            return b[1] - a[1];
+        })
+
+        for(let i = 0; i < Math.min(tagsArray.length, 5); i++){
+            tags[tagsArray[i][0]] = tagsArray[i][1];
+        }
+    }
+
+    function renderTags(){
+        getTags();
+
+        var tagsDiv = document.getElementById("tags");
+
+        for (var tag in tags) {
+            var column = document.createElement("div");
+            column.classList.add("col", "tagsCol");
+
+            var button = document.createElement("button");
+            button.innerHTML = tag;
+            button.classList.add("tagButton");
+            button.onclick = tagClick;
+            column.appendChild(button);
+
+            tagsDiv.appendChild(column);
+        }
+    }
+
+    function updateSortBy(type){
+        if(type !== sortBy){
+            sortBy = type;
+
+            var dropdown = document.getElementById("sortBySelector");
+            if(sortBy === "dateTaken"){
+                dropdown.innerHTML = "Sort By: Date Taken ";
+            } else {
+                dropdown.innerHTML = "Sort By: Date Uploaded ";
+            }
+        }
+
+        renderImages();
+    }
+
+    function updateSortOrder(order){
+        if(order !== sortOrder){
+            sortOrder = order;
+
+            var dropdown = document.getElementById("sortOrderSelector");
+            if(sortOrder === "ascending"){
+                dropdown.innerHTML = "Sort Order: Ascending ↑ ";
+            } else {
+                dropdown.innerHTML = "Sort By: Descending ↓ ";
+            }
+        }
+
+        renderImages();
+    }
+
+    window.onload = function(){
+        renderTags();
+        renderImages();
+    }
+</script>
+
+<div class="photosPage">
+    <div class="container-fluid" style="padding: 0;">
+        <div class="row justify-content-between">
+            <div class="col">
+                <div class="container-fluid">
+                    <div id="tags" class="row justify-content-start">
+                        <div class="col tagsText"><h1>Popular Tags: </h1></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="container-fluid">
+                    <div class="row justify-content-end">
+                        <div class="col dropdown">
+                            <button id="sortOrderSelector" class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Sort Order: Descending ↓
+                            </button>
+                            <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" style="cursor: pointer;" onclick="updateSortOrder('descending')">Descending ↓</a></li>
+                            <li><a class="dropdown-item" style="cursor: pointer;" onclick="updateSortOrder('ascending')">Ascending ↑ </a></li>
+                            </ul>
+                        </div>
+                        <div class="col dropdown">
+                            <button id="sortBySelector" class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Sort By: Date Uploaded
+                            </button>
+                            <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" style="cursor: pointer;" onclick="updateSortBy('dateUploaded')">Date Uploaded</a></li>
+                            <li><a class="dropdown-item" style="cursor: pointer;" onclick="updateSortBy('dateTaken')">Date Taken</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr class="mainDivider"/>
+    <div id="photos">
+    </div>
+</div>
