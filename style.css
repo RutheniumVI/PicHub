@@ -1,0 +1,23 @@
+/* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Comic Neue', sans-serif;
+}
+body{
+  display: flex;
+  padding: 10px;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+}
+.container{
+  width: 850px;
+  padding: 30px 35px 35px;
+  background: rgb(200, 200, 200);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
