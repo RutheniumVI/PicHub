@@ -4,96 +4,10 @@
 
 <script>
     tags = {}
+    images = JSON.parse(localStorage.getItem("images"))
 
     sortBy = "dateUploaded"
     sortOrder = "descending"
-
-    images = [
-        {
-            src: "../files/ocean.jpg",
-            dateTaken: new Date("2022-01-22"),
-            dateUploaded: new Date("2022-01-26"),
-            tags: ["water", "mountains"]
-        },
-        {
-            src: "../files/mountains.jpg",
-            dateTaken: new Date("2022-01-21"),
-            dateUploaded: new Date("2022-01-26"),
-            tags: ["mountains"]
-        },
-        {
-            src: "../files/tree.jpg",
-            dateTaken: new Date("2022-01-22"),
-            dateUploaded: new Date("2022-01-26"),
-            tags: ["tree"]
-        },
-        {
-            src: "../files/dog.jpg",
-            dateTaken: new Date("2022-01-25"),
-            dateUploaded: new Date("2022-01-26"),
-            tags: ["dog"]
-        },
-        {
-            src: "../files/tree.jpg",
-            dateTaken: new Date("2022-01-25"),
-            dateUploaded: new Date("2022-01-26"),
-            tags: ["tree"]
-        },
-        {
-            src: "../files/dog.jpg",
-            dateTaken: new Date("2022-01-25"),
-            dateUploaded: new Date("2022-01-26"),
-            tags: ["dog"]
-        },
-        {
-            src: "../files/tree.jpg",
-            dateTaken: new Date("2022-01-25"),
-            dateUploaded: new Date("2022-01-26"),
-            tags: ["tree"]
-        },
-        {
-            src: "../files/ocean.jpg",
-            dateTaken: new Date("2022-02-25"),
-            dateUploaded: new Date("2022-02-26"),
-            tags: ["water", "mountains"]
-        },
-        {
-            src: "../files/mountains.jpg",
-            dateTaken: new Date("2022-02-25"),
-            dateUploaded: new Date("2022-02-26"),
-            tags: ["mountains"]
-        },
-        {
-            src: "../files/tree.jpg",
-            dateTaken: new Date("2022-02-26"),
-            dateUploaded: new Date("2022-02-27"),
-            tags: ["tree"]
-        },
-        {
-            src: "../files/dog.jpg",
-            dateTaken: new Date("2022-02-26"),
-            dateUploaded: new Date("2022-02-27"),
-            tags: ["dog"]
-        },
-        {
-            src: "../files/tree.jpg",
-            dateTaken: new Date("2022-02-26"),
-            dateUploaded: new Date("2022-02-27"),
-            tags: ["tree"]
-        },
-        {
-            src: "../files/dog.jpg",
-            dateTaken: new Date("2022-02-26"),
-            dateUploaded: new Date("2022-02-27"),
-            tags: ["dog"]
-        },
-        {
-            src: "../files/tree.jpg",
-            dateTaken: new Date("2022-02-26"),
-            dateUploaded: new Date("2022-02-27"),
-            tags: ["tree"]
-        },
-    ]
 
     function sortImages(){
         images.sort((a, b) => {
@@ -138,11 +52,11 @@
             }
 
             if(displayImage){
-                if(prevDate == null || sortDate.getTime() != prevDate.getTime()){
-                    prevDate = sortDate;
+                if(prevDate == null || new Date(sortDate).getTime() != prevDate.getTime()){
+                    prevDate = new Date(sortDate);
 
                     var dateText = document.createElement("p");
-                    dateText.innerHTML = sortDate.toString().substring(4, 15);
+                    dateText.innerHTML = new Date(sortDate).toString().substring(4, 15);
                     photos.appendChild(dateText);
 
                     var line = document.createElement("hr");
