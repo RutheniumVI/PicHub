@@ -1,6 +1,6 @@
 /* The Modal (background) */
 .modal {
-  display: none; /* Hidden by default */
+  display: block; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   left: 0;
@@ -18,7 +18,7 @@
   margin: 7% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  width: 60vw; /* Could be more or less, depending on screen size */
+  width: 50vw; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
@@ -41,8 +41,9 @@
   background-color: DDDDDD;
 }
 
-input {
-margin-bottom: 1vh;
+.uploadForm {
+  margin-top: 4vh;
+  margin-bottom: 1vh;
 }
 
 .tagButton {
@@ -68,7 +69,7 @@ margin-bottom: 1vh;
 }
 
 .buttonsRow {
-  padding-top: 5vh;
+  padding-top: 3vh;
 }
 
 .buttons {
