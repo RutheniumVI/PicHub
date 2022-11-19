@@ -16,6 +16,7 @@
 
 .navbar .btn:hover {
     background-color: black;
+    color: white;
 }
 
 .navbar .active {

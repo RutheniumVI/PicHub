@@ -4,6 +4,7 @@
 
 <script>
     tags = {}
+    enableTags = false
     images = JSON.parse(localStorage.getItem("images"))
 
     sortBy = "dateUploaded"
@@ -13,18 +14,20 @@
         images.sort((a, b) => {
             if(sortBy === "dateTaken"){
                 if(sortOrder === "ascending"){
-                    return a.dateTaken - b.dateTaken;
+                    return new Date(a.dateTaken) - new Date(b.dateTaken);
                 } else {
-                    return b.dateTaken - a.dateTaken;
+                    return new Date(b.dateTaken) - new Date(a.dateTaken);
                 }
             } else {
                 if(sortOrder === "ascending"){
-                    return a.dateUploaded - b.dateUploaded;
+                    return new Date(a.dateUploaded) - new Date(b.dateUploaded);
                 } else {
-                    return b.dateUploaded - a.dateUploaded;
+                    return new Date(b.dateUploaded) - new Date(a.dateUploaded);
                 }
             }
         })
+
+        console.log(images);
     }
 
     function renderImages(){
@@ -38,11 +41,16 @@
         var currGallery = null;
         images.forEach(img => {
             var displayImage = false;
-            for(let i = 0; i < img.tags.length; i++){
-                if(tags[img.tags[i]]){
-                    displayImage = true;
-                    break;
+
+            if(enableTags){
+                for(let i = 0; i < img.tags.length; i++){
+                    if(tags[img.tags[i]]){
+                        displayImage = true;
+                        break;
+                    }
                 }
+            } else {
+                displayImage = true;
             }
 
             if(sortBy == "dateTaken"){
@@ -89,6 +97,21 @@
             tags[button.innerHTML]= true;
             button.classList.remove("tagButton-disabled");
         }
+
+        if(enableTags){
+            disableTags = false;
+            for(tag in tags){
+                if(tags[tag]){
+                    disableTags = true;
+                }
+            }
+
+            if(!disableTags){
+                enableTags = false;
+            }
+        } else {
+            enableTags = true;
+        }
     
         renderImages();
     }
@@ -116,7 +139,7 @@
         })
 
         for(let i = 0; i < Math.min(tagsArray.length, 5); i++){
-            tags[tagsArray[i][0]] = tagsArray[i][1];
+            tags[tagsArray[i][0]] = false;
         }
     }
 
@@ -131,7 +154,7 @@
 
             var button = document.createElement("button");
             button.innerHTML = tag;
-            button.classList.add("tagButton");
+            button.classList.add("tagButton", "tagButton-disabled");
             button.onclick = tagClick;
             column.appendChild(button);
 
@@ -160,9 +183,9 @@
 
             var dropdown = document.getElementById("sortOrderSelector");
             if(sortOrder === "ascending"){
-                dropdown.innerHTML = "Sort Order: Ascending ↑ ";
+                dropdown.innerHTML = "Sort Order: Oldest First ↑ ";
             } else {
-                dropdown.innerHTML = "Sort By: Descending ↓ ";
+                dropdown.innerHTML = "Sort By: Newest First ↓ ";
             }
         }
 
@@ -191,11 +214,11 @@
                     <div class="row justify-content-end">
                         <div class="col dropdown">
                             <button id="sortOrderSelector" class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Sort Order: Descending ↓
+                            Sort Order: Newest First ↓
                             </button>
                             <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" style="cursor: pointer;" onclick="updateSortOrder('descending')">Descending ↓</a></li>
-                            <li><a class="dropdown-item" style="cursor: pointer;" onclick="updateSortOrder('ascending')">Ascending ↑ </a></li>
+                            <li><a class="dropdown-item" style="cursor: pointer;" onclick="updateSortOrder('descending')">Newest First ↓ </a></li>
+                            <li><a class="dropdown-item" style="cursor: pointer;" onclick="updateSortOrder('ascending')">Oldest First ↑ </a></li>
                             </ul>
                         </div>
                         <div class="col dropdown">
