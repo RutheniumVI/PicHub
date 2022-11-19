@@ -5,19 +5,19 @@
     font-size: 20px;
 }
 
-.search-form {
+.navbar .search-form {
     margin-top: 5px;
     margin-right: 10px;
 }
 
-.btn {
+.navbar .btn {
     color: black;
 }
 
-.btn:hover {
+.navbar .btn:hover {
     background-color: black;
 }
 
-.active {
+.navbar .active {
     font-weight: bold;
 }
