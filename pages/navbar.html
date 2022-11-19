@@ -103,14 +103,14 @@
                             <input type="date" id="date" name="dateTaken" value="2018-07-22"><br>
                             <label for="tags"><h3>Tags:</h3></label><br>
                             <!-- <input type="text" id="tags" name="tags"><br> -->
-                            <textarea id="tags" name="tags" rows="2" cols="30"></textarea><br>
+                            <textarea id="tagsInput" name="tags" rows="2" cols="30"></textarea><br>
                             <label for="suggested"><h3>Suggested:</h3></label><br>
                         </form>
                         <div class="container">
-                            <div id="tags" class="row no-gutters justify-content-start">
-                                <div class="col tagsText"><button class="tagButton">Mountain</button></div>
-                                <div class="col tagsText"><button class="tagButton">River</button></div>
-                                <div class="col tagsText"><button class="tagButton">Nature</button></div>
+                            <div id="suggestedTags" class="row no-gutters justify-content-start">
+                                <div class="col suggestedTags"><button class="suggestedTagButton">Mountain</button></div>
+                                <div class="col suggestedTags"><button class="suggestedTagButton">River</button></div>
+                                <div class="col suggestedTags"><button class="suggestedTagButton">Nature</button></div>
                             </div>
                         </div>
                     </div>
@@ -118,7 +118,7 @@
             </div>
             <div class="row justify-content-end buttonsRow">
                 <!-- <div class="col buttons"><button class="actionButtons" id="skipButton">Skip</button></div> -->
-                <div class="col buttons"><button class="actionButtons" id="confirmButton">Upload</button></div>
+                <div class="col cropResize"><button class="actionButtons" id="confirmButton">Upload</button></div>
                 
             </div>
         </div>

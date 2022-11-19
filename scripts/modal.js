@@ -4,7 +4,7 @@ var modal = document.getElementById("uploadModal");
 var previewImage = document.getElementById("previewImg")
 var imageName = document.getElementById("name")
 var imageDate = document.getElementById("date")
-var imageTags = document.getElementById("tags")
+var imageTags = document.getElementById("tagsInput")
 
 
 var fileInput = document.getElementById("file-input")
@@ -79,7 +79,7 @@ confirmBtn.onclick = function () {
 
 
 //Suggested tags
-var tags = document.getElementsByClassName("tagButton")
+var tags = document.getElementsByClassName("suggestedTagButton")
 
 for(var i=0;i<tags.length;i++){
   tags[i].onclick = function() {
