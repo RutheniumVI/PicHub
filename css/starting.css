@@ -18,7 +18,7 @@
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     background-color: #EAEAEA;
-    color: rgb(8, 7, 7);
+    color: rgb(252, 252, 250);
     font-size: 16px;
     padding: 12px 24px;
     border: none;
@@ -27,7 +27,7 @@
   }
   
   .container .cbtn:hover {
-    background-color: black;
+    background-color: rgb(0, 0, 0);
   }
   .centered {
     position: absolute;
@@ -49,14 +49,13 @@
   
       .mbtn.signup {
           color:rgb(3, 3, 3);
-  
       top:-10%;
       left:80%;
       width:90px;
       height:40px;
       position: absolute;
       z-index: 2;
-      background: rgb(93,177,254);
+      background:rgb(255, 153, 0);
       }
       .mbtn.login {
       color:white;
@@ -67,4 +66,210 @@
       position: absolute;
       z-index: 2;
       background: rgb(17, 16, 15); 
+      }
+
+
+      .header_d{
+      
+
+          text-align: center;
+          
+        
+      }
+
+      .modal-box{ font-family: 'Poppins', sans-serif; }
+      .show-modal{
+          color: rgb(128, 49, 49);
+          background: linear-gradient(to right, #131314, #161a1c, #030b14);
+          font-size: 18px;
+          font-weight: 600;
+          text-transform: capitalize;
+          padding: 10px 15px;
+          margin: 200px auto 0;
+          border: none;
+          outline: none;
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+          display: block;
+          transition: all 0.3s ease 0s;
+      }
+      .mbtn {
+          padding:0.6em 2em;
+          border-radius: 8px;
+          font-size:0.6em;
+          border:0;
+          cursor:pointer;
+          font-weight: 600;
+          margin:1em;
+        }
+        
+      
+        
+           
+            .mbtn.login {
+            color:white;
+            top:-10%;
+            left:90%;
+            width:120px;
+            height:40px;
+            position: absolute;
+            z-index: 2;
+            background: rgb(17, 16, 15); 
+            }
+            .mbtn.login:hover{
+              color: #fff;
+          box-shadow: 0 0 5px rgba(170, 25, 25, 0.5);
+            }
+      
+            .mbtn.signup:hover{
+              color: #fff;
+          box-shadow: 0 0 5px rgba(0,0,0,0.5);
+            }
+      .show-modal:hover,
+      .show-modal:focus{
+          color: #fff;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+          outline: none;
+      }
+      
+      .modal-dialog{
+          width: 400px;
+          margin: 70px auto 0;
+      }
+      .modal-dialog{ transform: scale(0.5); }
+      .modal-dialog{ transform: scale(1); }
+      .modal-dialog .modal-content{
+          text-align: center;
+          border: none;
+      }
+      .modal-content .close{
+          color: #fff;
+          background: linear-gradient(to right, #d90909, #b72527, #ee0808);
+          font-size: 25px;
+          font-weight: 400;
+          text-shadow: none;
+          line-height: 27px;
+          height: 25px;
+          width: 25px;
+          border-radius: 50%;
+          overflow: hidden;
+          opacity: 1;
+          position: absolute;
+          left: auto;
+          right: 8px;
+          top: 8px;
+          z-index: 1;
+          transition: all 0.3s;
+      }
+      .modal-content .close:hover{
+          color: #fff;
+          box-shadow: 0 0 5px rgba(0,0,0,0.5);
+      }
+      .close:focus{ outline: none; }
+      .modal-body{ padding: 60px 40px 40px !important; }
+      .modal-body .title{
+          color: #070606;
+          font-size: 33px;
+          font-weight: 700;
+          letter-spacing: 1px;
+          margin: 0 0 10px;
+      }
+      .modal-body .description{
+          color: #9A9EA9;
+          font-size: 16px;
+          margin: 0 0 20px;
+      }
+      .modal-body .form-group{
+          text-align: left;
+          margin-bottom: 20px;
+          position: relative;
+      }
+      .modal-body .input-icon{
+          color: #777;
+          font-size: 18px;
+          transform: translateY(-50%);
+          position: absolute;
+          top: 50%;
+          left: 20px;
+      }
+      .modal-body .form-control{
+          font-size: 17px;
+          height: 45px;
+          width: 100%;
+          padding: 6px 0 6px 50px;
+          margin: 0 auto;
+          border: 2px solid #eee;
+          border-radius: 5px;
+          box-shadow: none;
+          outline: none;
+      }
+      .form-control::placeholder{
+          color: #AEAFB1;
+      }
+      .form-group.checkbox{
+          width: 130px;
+          margin-top: 0;
+          display: inline-block;
+      }
+      .form-group.checkbox label{
+          color: #9A9EA9;
+          font-weight: normal;
+      }
+      .form-group.checkbox input[type=checkbox]{
+          margin-left: 0;
+      }
+      .modal-body .forgot-pass{
+          color: #7F7FD5;
+          font-size: 13px;
+          text-align: right;
+          width: calc(100% - 135px);
+          margin: 2px 0;
+          display: inline-block;
+          vertical-align: top;
+          transition: all 0.3s ease 0s;
+      }
+      .forgot-pass:hover{
+          color: #9A9EA9;
+          text-decoration: underline;
+      }
+      .modal-content .modal-body .btn{
+          color: rgb(9, 9, 9);
+          background: rgb(255, 153, 0);
+          font-size: 16px;
+          font-weight: 500;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          line-height: 38px;
+          width: 100%;
+          height: 40px;
+          padding: 0;
+          border: none;
+          border-radius: 5px;
+          border: none;
+          display: inline-block;
+          transition: all 0.6s ease 0s;
+      }
+      .modal-content .modal-body .btn:hover{
+          color: #fff;
+          letter-spacing: 2px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      }
+      .modal-content .modal-body .btn:focus{ outline: none; }
+      @media only screen and (max-width: 480px){
+          .modal-dialog{ width: 95% !important; }
+          .modal-content .modal-body{
+              padding: 60px 20px 40px !important;
+          }
+      }
+      .bg{
+
+       
+          text-align:center;
+          padding:20px;
+          width:340px;
+          margin: 0 auto;
+        
+          /* Set the border and border image properties */
+          border:50px solid transparent;
+          border-image:url(https://www.w3resource.com/html-css-exercise/border.png) 50 50 round;
+        
       }
