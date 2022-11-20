@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+.albumsPage {
+    font-family: 'Open Sans', sans-serif;
+    width: 90vw;
+    margin: auto;
+}
+
+.albumsHeader h1 {
+    font-size: 25px;
+    margin: 5px 2px;
+    padding-right: 5px;
+}
+
+.mainDivider {
+    margin: 0.3vw;
+    background-color: black;
+    color: black;
+    height: 2px;
+    opacity: 100%;
+}
+
+.albumDiv {
+    width: 17vw;
+    height: 17vw;
+    background-size: cover;
+    background-position: center center;
+    background-color: gray;
+    margin: 0.3vw;
+}
+
+.albumDiv:hover {
+    cursor: pointer;
+    width: 17.3vw;
+    height: 17.3vw;
+    margin: 0.15vw;
+}
