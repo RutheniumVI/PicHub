@@ -3,6 +3,7 @@
 <link rel="stylesheet" href="../css/photos.css">
 
 <script>
+    keyword = ''
     tags = {}
     enableTags = false
     images = JSON.parse(localStorage.getItem("images"))
@@ -26,8 +27,6 @@
                 }
             }
         })
-
-        console.log(images);
     }
 
     function renderImages(){
@@ -41,8 +40,13 @@
         var currGallery = null;
         images.forEach(img => {
             var displayImage = false;
+            if (keyword.length > 0){
+                if (img.tags.includes(keyword.toLowerCase())){
+                    displayImage = true
+                }
 
-            if(enableTags){
+            }
+            else if(enableTags){
                 for(let i = 0; i < img.tags.length; i++){
                     if(tags[img.tags[i]]){
                         displayImage = true;
@@ -112,6 +116,7 @@
         } else {
             enableTags = true;
         }
+        keyword = ''
     
         renderImages();
     }
@@ -192,6 +197,12 @@
         renderImages();
     }
 
+    function submitSearch(event){
+        event.preventDefault();
+        keyword = document.querySelector('#search-bar').value
+        renderImages()
+    }
+
     window.onload = function(){
         renderTags();
         renderImages();
@@ -199,6 +210,119 @@
 </script>
 
 <div class="photosPage">
+    <div>
+        <nav class="navbar sticky-top navbar-expand-lg" style="background-color: E6E6E6;">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="./photos.html">
+                <img src="../files/logo.png" height="35"/>
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                  <li class="nav-item"></li>
+                    <form class="d-flex search-form" onsubmit="submitSearch(event)">
+                        <input id="search-bar" name="search" class="form-control me-2" type="search" placeholder="Search photos or albums ..." aria-label="Search">
+                        <button class="btn btn-outline-dark" type="submit">Search</button>
+                    </form>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="./photos.html">Photos</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Albums</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="showUploadModal()">
+                      Upload
+                      <img src="../files/upload.png" height="20"/>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">
+                      Trash
+                      <img src="../files/trash.png" height="20"/>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">
+                      <img src="../files/settings.png" height="30"/>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+        </nav>
+      
+        <!-- Upload Modal -->
+        <div id="uploadModal" class="modal">
+          <!-- Modal content -->
+          <div class="modal-content">
+      
+              <div class="container-fluid" style="padding: 0;">
+                  <div class="row justify-content-between">
+                      <div class="col">
+                          <div class="container-fluid">
+                              <div class="row justify-content-start">
+                                  <div class="col"><h1>Uploading </h1></div>
+                                  <div class="col"><span class="close">&times;</span></div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <hr class="mainDivider"/>
+                  <div class="row gx-5">
+                      <div class="col justify-content-center">
+                          <div class="row preview-img">
+                              <img id="previewImg" src="../files/upload_placeholder.jpg" alt="preview-img">
+                              <input type="file" id="file-input" accept="image/*" hidden>
+                          </div>
+                          <div class="row imageEdit justify-content-center">
+                              <div class="col imageButtons"><input type="image" id="crop" src="../files/crop.png"/></div>
+                              <div class="col imageButtons"><input type="image" id="resize" src="../files/resize.png"/></div>
+                          </div>
+                      </div>
+                      <div class="col justify-content-center">
+                          <div class="container-fluid">
+                              <form class="uploadForm">
+                                  <label for="name"><h3>Name:</h3></label><br>
+                                  <input type="text" id="name" name="name"><br>
+                                  <label for="dateTaken"><h3>Date taken:</h3></label><br>
+                                  <input type="date" id="date" name="dateTaken" value="2018-07-22"><br>
+                              </form>
+                              <div class="row">
+                                <h3>Tags:</h3><br>
+                                <div class="col"><input type="text" placeholder="tag" id="tagInput"/></div>
+                                <div class="col"><button class="actionButtons" id="addTagBtn">Add</button></div>
+                              </div>
+                              <div class="container">
+                                <div class="row newTags" id="newTags">
+                                </div>
+                              </div>
+                              <div class="row">
+                                <h3>Suggested:</h3><br>
+                              </div>
+                              <div class="container">
+                                  <div id="suggestedTags" class="row no-gutters justify-content-start">
+                                      <div class="col suggestedTags"><button class="suggestedTagButton">Mountain</button></div>
+                                      <div class="col suggestedTags"><button class="suggestedTagButton">River</button></div>
+                                      <div class="col suggestedTags"><button class="suggestedTagButton">Nature</button></div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row justify-content-end buttonsRow">
+                      <!-- <div class="col buttons"><button class="actionButtons" id="skipButton">Skip</button></div> -->
+                      <div class="col cropResize"><button class="actionButtons" id="confirmButton">Upload</button></div>
+                      
+                  </div>
+              </div>
+          </div>
+      
+        </div>
+      </div>
 
     <div class="container-fluid" style="padding: 0;">
         <div class="row justify-content-between">
