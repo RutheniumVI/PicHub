@@ -103,11 +103,19 @@
                             <input type="text" id="name" name="name"><br>
                             <label for="dateTaken"><h3>Date taken:</h3></label><br>
                             <input type="date" id="date" name="dateTaken" value="2018-07-22"><br>
-                            <label for="tags"><h3>Tags:</h3></label><br>
-                            <!-- <input type="text" id="tags" name="tags"><br> -->
-                            <textarea id="tagsInput" name="tags" rows="2" cols="30"></textarea><br>
-                            <label for="suggested"><h3>Suggested:</h3></label><br>
                         </form>
+                        <div class="row">
+                          <h3>Tags:</h3><br>
+                          <div class="col"><input type="text" placeholder="tag" id="tagInput"/></div>
+                          <div class="col"><button class="actionButtons" id="addTagBtn">Add</button></div>
+                        </div>
+                        <div class="container">
+                          <div class="row newTags" id="newTags">
+                          </div>
+                        </div>
+                        <div class="row">
+                          <h3>Suggested:</h3><br>
+                        </div>
                         <div class="container">
                             <div id="suggestedTags" class="row no-gutters justify-content-start">
                                 <div class="col suggestedTags"><button class="suggestedTagButton">Mountain</button></div>

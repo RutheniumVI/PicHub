@@ -4,8 +4,10 @@ var modal = document.getElementById("uploadModal");
 var previewImage = document.getElementById("previewImg")
 var imageName = document.getElementById("name")
 var imageDate = document.getElementById("date")
-var imageTags = document.getElementById("tagsInput")
-
+var imageTags = document.getElementById("newTags")
+var addTagBtn = document.getElementById("addTagBtn")
+var tagInput = document.getElementById("tagInput")
+var newTagArea = document.getElementById("newTags")
 
 var fileInput = document.getElementById("file-input")
 var confirmBtn = document.getElementById("confirmButton")
@@ -69,7 +71,7 @@ confirmBtn.onclick = function () {
         src: dataURL,
         dateTaken: imageName.value,
         dateUploaded:  new Date(imageDate.value),
-        tags: imageTags.value.toLowerCase().split(", ")
+        tags: getNewTagsList()
     }
     images.push(img)
     localStorage.images = JSON.stringify(images)
@@ -77,12 +79,67 @@ confirmBtn.onclick = function () {
     modal.style.display = "none";
 }
 
+function getNewTagsList() {
+  var newTagsList = []
+  var tags = document.getElementsByClassName("newTag")
+  for(var i=0;i<tags.length;i++){
+    newTagsList.push(tags[i].innerHTML)
+  }
+  return newTagsList;
+}
+
+function addNewTagButton(tag){
+  if(tag === "") return
+
+  var column = document.createElement("div")
+  column.classList.add("col", "newTagCol")
+
+  var button = document.createElement("button")
+  button.innerHTML = tag
+  button.classList.add("newTag")
+  button.onclick = function() {
+    if(suggestedTags.indexOf(tag) >= 0) {
+      addSuggestedTag(tag)
+    }
+    this.parentElement.remove();
+  };
+
+  column.appendChild(button)
+  newTagArea.appendChild(column)
+}
+
+function suggestedButtonOnclick() {
+  suggestedTags.push(this.innerText)
+  addNewTagButton(this.innerText)
+  this.parentElement.remove();
+}
+
+function addSuggestedTag(tag){
+
+  var suggestedTagsArea = document.getElementById("suggestedTags")
+  var column = document.createElement("div")
+  column.classList.add("col", "suggestedTags")
+
+  var button = document.createElement("button")
+  button.innerHTML = tag
+  button.onclick = suggestedButtonOnclick
+  button.classList.add("suggestedTagButton")
+
+  column.appendChild(button)
+  suggestedTagsArea.appendChild(column)
+}
+
+addTagBtn.onclick = function () {
+  addNewTagButton(tagInput.value);
+  //clear input
+  tagInput.value=""
+}
+
 
 //Suggested tags
 var tags = document.getElementsByClassName("suggestedTagButton")
+var suggestedTags = []
 
 for(var i=0;i<tags.length;i++){
-  tags[i].onclick = function() {
-    imageTags.value += this.innerText + ", "
-  }
+  tags[i].onclick = suggestedButtonOnclick;
 }
