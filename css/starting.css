@@ -1,0 +1,70 @@
+.container {
+    position: relative;
+    top: 0%;
+    width: 70%;
+  }
+  
+  /* Make the image responsive */
+  .container img {
+    width: 100%;
+    height: auto;
+  }
+  
+  /* Style the button and place it in the middle of the container/image */
+  .container .cbtn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #EAEAEA;
+    color: rgb(8, 7, 7);
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .container .cbtn:hover {
+    background-color: black;
+  }
+  .centered {
+    position: absolute;
+    top: 12%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .mbtn {
+    padding:0.6em 2em;
+    border-radius: 8px;
+    font-size:0.6em;
+    border:0;
+    cursor:pointer;
+    margin:1em;
+  }
+  
+
+  
+      .mbtn.signup {
+          color:rgb(3, 3, 3);
+  
+      top:-10%;
+      left:80%;
+      width:90px;
+      height:40px;
+      position: absolute;
+      z-index: 2;
+      background: rgb(93,177,254);
+      }
+      .mbtn.login {
+      color:white;
+      top:-10%;
+      left:90%;
+      width:90px;
+      height:40px;
+      position: absolute;
+      z-index: 2;
+      background: rgb(17, 16, 15); 
+      }

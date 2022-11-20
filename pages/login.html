@@ -1,40 +1,16 @@
-
-<nav class="navbar sticky-top navbar-expand-lg" style="background-color: E6E6E6;">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="./photos.html">
-      <img src="../files/logo.png" height="5"/>
-    </a>
-    </div>
-  </div>
-</nav>
-
 <!DOCTYPE html>
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
   <title>Simple Login Form Example</title>
   <link rel='stylesheet' href='../css/login2.css'><link rel="stylesheet" href="../css/login.css">
-  <style>
-    img.background {
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-    -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
-    filter: blur(5px);
-    }
-  </style>
-
 </head>
 <body>
 
-<img class="background" src="../files/bg_pages.png" alt="Aleq">
 <!-- partial:index.partial.html -->
 <div class="login-form">
   <form>
-    <h1>Login</h1>
+    <h1>Sign up</h1>
     <div class="content">
       <div class="input-field">
         <input type="email" placeholder="Email" autocomplete="nope">
@@ -42,11 +18,10 @@
       <div class="input-field">
         <input type="password" placeholder="Password" autocomplete="new-password">
       </div>
-      <a href="#" class="link">Forgot Your Password?</a>
+      <a href="#" class="link">Password MUST contain digits and letters</a>
     </div>
     <div class="action">
       <button class="register" onclick="document.location='./photos.html'">Register</button>
-      <button class="signin" onclick="document.location='./photos.html'">Sign in</button>
     </div>
 
   </form>

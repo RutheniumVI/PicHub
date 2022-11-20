@@ -20,7 +20,7 @@
     width: 500px;
     margin: 65px auto;
     display: -webkit-box;
-    display: flex;
+    display: block;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
             flex-direction: column;
@@ -70,11 +70,11 @@
   }
   .login-form a.link {
     text-decoration: none;
-    color: #747474;
+    color: #d51414;
     letter-spacing: 0.2px;
-    text-transform: uppercase;
     display: inline-block;
     margin-top: 20px;
+    font-weight: bold;
   }
   .login-form .action {
     display: -webkit-box;
