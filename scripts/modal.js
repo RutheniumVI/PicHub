@@ -31,14 +31,17 @@ window.onclick = function(event) {
 previewImage.onclick = function() {
     fileInput.click()
 }
-
+var img;
 //Uploads the image shown to the one picked by the user
 fileInput.onchange = function() {
     let file = fileInput.files[0];
     if(!file) return;
     console.log(file);
-    imageName.value = file.name.replace(/\.[^/.]+$/, "")
-    previewImage.src = URL.createObjectURL(file);
+    imageName.value = file.name.replace(/\.[^/.]+$/, "");
+    img = new Image();
+    var url = URL.createObjectURL(file);
+    previewImage.src = url;
+    img.src = url;
 }
 
 function clearModal() {
@@ -52,9 +55,8 @@ function clearModal() {
 function getImageDataURL() {
   previewImage = document.getElementById("previewImg")
   var canvas = document.createElement("canvas")
-  canvas.width = previewImage.width;
-  canvas.height = previewImage.height;
-
+  canvas.width = img.width;
+  canvas.height = img.height;
   var ctx = canvas.getContext("2d");
   ctx.drawImage(previewImage, 0, 0, previewImage.width, previewImage.height);
   previewImage.setAttribute('crossOrigin', 'Anonymous')
@@ -83,7 +85,7 @@ function getNewTagsList() {
   var newTagsList = []
   var tags = document.getElementsByClassName("newTag")
   for(var i=0;i<tags.length;i++){
-    newTagsList.push(tags[i].innerHTML)
+    newTagsList.push(tags[i].innerHTML) //
   }
   return newTagsList;
 }
