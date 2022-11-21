@@ -86,9 +86,9 @@
                 </div>
             </div>
             <hr class="mainDivider"/>
-            <div class="row gx-5">
+            <div class="row gx-5" style="margin-top: 2%; margin-bottom: 2%;">
                 <div class="col justify-content-center">
-                    <div class="row preview-img">
+                    <div class="row preview-img" style="cursor: pointer;">
                         <img id="previewImg" src="../files/upload_placeholder.jpg" alt="preview-img">
                         <input type="file" id="file-input" accept="image/*" hidden>
                     </div>
@@ -127,11 +127,10 @@
                     </div>
                 </div>
             </div>
-            <div class="row justify-content-end buttonsRow">
-                <!-- <div class="col buttons"><button class="actionButtons" id="skipButton">Skip</button></div> -->
-                <div class="col cropResize"><button class="actionButtons" id="confirmButton">Upload</button></div>
-                
-            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" style="background-color: black;" id="confirmButton">Upload</button>
+          </div>
         </div>
     </div>
 
