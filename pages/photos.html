@@ -87,9 +87,40 @@
                 var imgDiv = document.createElement("div");
                 imgDiv.classList.add("imgDiv");
                 imgDiv.style.backgroundImage = "url("+img.src+")";
+                imgDiv.onclick = function() { imageClicked(img)};
                 currGallery.appendChild(imgDiv);
             }
         });
+    }
+
+    function imageClicked(img) {
+        var modal = document.getElementById("detailsModal");
+        modal.style.display = "block";
+
+        var image = document.getElementById("detailsImage");
+        var imageName = document.getElementById("detailsName");
+        var imageDateT = document.getElementById("detailsDateT");
+        var imageDateU = document.getElementById("detailsDateU");
+        var tagsArea = document.getElementById("detailTags")
+
+        image.src = img.src;
+        imageName.innerHTML = img.name;
+        imageDateT.innerHTML = (new Date(img.dateTaken)).toLocaleDateString();
+        imageDateU.innerHTML = (new Date(img.dateUploaded)).toLocaleDateString();
+
+        tagsArea.innerHTML = "";
+        img.tags.forEach(tag => {
+            var column = document.createElement("div")
+            column.classList.add("col", "detailsTags")
+
+            var button = document.createElement("button")
+            button.innerHTML = tag
+            button.classList.add("detailsTagButton")
+
+            column.appendChild(button)
+            tagsArea.appendChild(column)
+        });
+
     }
 
     function tagClick(tag){
@@ -208,7 +239,71 @@
         renderTags();
         renderImages();
     }
+
+    function closeDetailsModal(){
+        console.log("hey")
+        document.getElementById("detailsModal").style.display = "none";
+    }
+
+    function downloadImage(){
+
+    }
 </script>
+
+<div id="detailsModal" class="detailsModal">
+    <!-- Modal content -->
+    <div id="detailModalContent">
+            <div class="row">
+                <div class="col">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <!-- <div class="col"><h1>Image Details</h1></div> -->
+                            <div class="col"><button type="button" id="detailsClose" class="btn-close" aria-label="Close" onclick="closeDetailsModal()"></button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <hr class="mainDivider"/> -->
+            <div class="row">
+                <div class="col">
+                    <img id="detailsImage">
+                </div>
+                <div class="col justify-content-center" style="margin-top: 1vh">
+                    <div class="container-fluid">
+                        <form class="form-group">
+                            <label for="name"><p class="detailsLabel">Name:</p></label>
+                            <label for="name" class="detailsField"><p id="detailsName"></p></label><br>
+                            <label for="dateTaken" class="detailsLabel"><p>Date taken:</p></label>
+                            <label for="name" class="detailsField"><p id="detailsDateT"></p></label><br>
+                            <label for="dateTaken" class="detailsLabel"><p>Date uploaded:</p></label>
+                            <label for="name" class="detailsField"><p id="detailsDateU"></p></label><br>
+                        </form>
+                        <div class="row">
+                        <p class="detailsLabel">Tags:</p><br>
+                        </div>
+                        <div class="container">
+                        <div class="row" id="detailTags">
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-between" style="margin-top: 20px;">
+                <!-- <button type="button" class="btn btn-primary" style="background-color: black; margin-right: 1vw; float: right;" id="moveButton">Move to album</button>
+                <button type="button" class="btn btn-primary" style="background-color: rgb(255, 63, 63);" id="deleteButton">Delete</button>
+                <button type="button" class="btn btn-primary" style="background-color: black;" id="downloadButton" style="margin-right: 1vw;">Dowload</button> -->
+                <div class="col justify-content-end" style="padding-left: 2px;">
+                    <button type="submit" class="btn btn-primary" style="background-color: black;" >Download</button>                                    
+                    <button type="submit" class="btn btn-primary" style="background-color: black;" >Move to Album</button>        
+                </div>                            
+                <div>
+                    <button type="button" class="btn btn-danger">Delete</button>
+                    <button type="submit" class="btn btn-primary" style="background-color: black;" >Edit</button>
+                </div> 
+            </div>
+    </div>
+
+</div>
 
 <div class="photosPage">
     <div class="container-fluid" style="padding: 0;">
