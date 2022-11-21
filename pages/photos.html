@@ -40,13 +40,8 @@
         var currGallery = null;
         images.forEach(img => {
             var displayImage = false;
-            if (keyword && keyword.length > 0){
-                if (img.tags.includes(keyword.toLowerCase())){
-                    displayImage = true
-                }
-
-            }
-            else if(enableTags){
+            
+            if(enableTags){
                 for(let i = 0; i < img.tags.length; i++){
                     if(tags[img.tags[i]]){
                         displayImage = true;
@@ -229,13 +224,31 @@
         renderImages();
     }
 
-    function submitSearch(event){
-        event.preventDefault();
-        keyword = document.querySelector('#search-bar').value
-        renderImages()
+    function applySearch(){
+        keyword = new URLSearchParams(window.location.search).get('search');
+
+        if (keyword && keyword.length > 0){
+            images = images.filter((img) => {
+                if (img.tags.includes(keyword.toLowerCase())){
+                    return true;
+                }
+            });
+        }
+
+        keyword = new URLSearchParams(window.location.search).get('album');
+
+        if (keyword && keyword.length > 0){
+            images = images.filter((img) => {
+                if (img.albums.includes(keyword.toLowerCase())){
+                    return true;
+                }
+            });
+        }
+
     }
 
     window.onload = function(){
+        applySearch();
         renderTags();
         renderImages();
     }
