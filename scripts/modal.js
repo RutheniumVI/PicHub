@@ -46,7 +46,9 @@ fileInput.onchange = function() {
 
 function clearModal() {
   previewImage.removeAttribute("crossOrigin")
-  img.removeAttribute("crossOrigin")
+  if(img != null){
+    img.removeAttribute("crossOrigin")
+  }
   previewImage.src = "../files/upload_placeholder.jpg"
   imageName.value = ""
   imageTags.value = ""
@@ -74,14 +76,17 @@ confirmBtn.onclick = function () {
     let img =  {
         src: dataURL,
         name: imageName.value,
-        dateUploaded:  new Date(imageDate.value),
-        dateTaken: new Date(),
-        tags: getNewTagsList()
+        dateUploaded: new Date(),
+        dateTaken: new Date(imageDate.value),
+        tags: getNewTagsList(),
+        albums: []
     }
     images.push(img)
     localStorage.images = JSON.stringify(images)
     clearModal()
     modal.style.display = "none";
+
+    window.location.replace("./photos.html");
 }
 
 function getNewTagsList() {

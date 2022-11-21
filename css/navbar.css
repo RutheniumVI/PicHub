@@ -1,24 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('../libraries/font.css');
 
-.navbar {
+.navbarCSS .navbar {
     font-family: 'Open Sans', sans-serif;
     font-size: 20px;
 }
 
-.navbar .search-form {
+.navbarCSS .navbar .search-form {
     margin-top: 5px;
     margin-right: 10px;
 }
 
-.navbar .btn {
+.navbarCSS .navbar .btn {
     color: black;
 }
 
-.navbar .btn:hover {
+.navbarCSS .navbar .btn:hover {
     background-color: black;
     color: white;
 }
 
-.navbar .active {
+.navbarCSS .navbar .active {
     font-weight: bold;
 }

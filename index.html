@@ -1,22 +1,132 @@
-<!DOCTYPE html>
-<!-- Coding By CodingNepal - youtube.com/codingnepal -->
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>PicHub</title>
-    <link rel="stylesheet" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
-  </head>
-  <body>
-    <div class="container">
-        <form action="pages/home.html">
-            <button type="submit">Login</button>
-         </form>
-    </div>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link rel="stylesheet" href="./css/navbar.css">
+<link rel="stylesheet" href="./css/starting.css">
+<link href="./libraries/bootstrap5.css" rel="stylesheet">
+<script src="./libraries/bootstrap5.js"></script>
+<link rel="stylesheet" href="./libraries/bootstrap3.css">
+<script type="text/javascript" src="./libraries/jquery.js">
+</script>
+<script src="./libraries/bootstrap3.js"></script>
 
-    <script src="script.js"></script>
-    
-  </body>
+<nav class="navbar fixed-top navbar-expand-lg" style="background-color: E6E6E6; margin-bottom: 0;">
+    <div class="container-fluid">
+        <a class="navbar-brand">
+            <img src="./files/logo.png" height="35" />
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <button type="button" class="mbtn help show-modal btn-primary btn-lg">
+                        Need Help?
+                    </button>
+                </li>
+            </ul>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <button type="button" class="mbtn login show-modal btn-primary btn-lg" data-toggle="modal"
+                        data-target="#myModal1">
+                        Login
+                    </button>
+                </li>
+            </ul>
+
+            <!--sign up modal !!!!!!!!!!!!! issue doesnt show up-->
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <button type="button" class="mbtn signup show-modal-t btn-primary btn-lg" data-toggle="modal"
+                        data-target="#myModal2">
+                        Sign up
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<body>
+    <div class="mainPage"></div>
+    <div class="container">
+        <h1 class="header_d">Save your Memories</h1>
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="modal-box"></div>
+
+                <button type="button" class="cbtn btn-primary btn-lg show-modal" data-toggle="modal"
+                    data-target="#myModal1">
+                    Get Started
+                </button>
+
+                <!-- Modal -->
+
+                <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content clearfix">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">×</span></button>
+                            <div class="modal-body">
+                                <h3 class="title">Welcome to PicHub!</h3>
+                                <p class="description">Login here Using Email & Password</p>
+                                <div class="form-group">
+                                    <span class="input-icon"><img src="./files/fa-user.png"/></span>
+                                    <input type="email" class="form-control" placeholder="Enter email">
+                                </div>
+                                <div class="form-group">
+                                    <span class="input-icon"><img src="./files/fa-key.png"/></span>
+                                    <input type="password" class="form-control" placeholder="Password">
+                                </div>
+                                <div class="form-group checkbox">
+                                    <input type="checkbox">
+                                    <label>Remamber me</label>
+                                </div>
+                                <a href="" class="forgot-pass">Forgot Password?</a>
+                                <button class="btn" onclick="document.location='./pages/photos.html'">Login</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--sign up modal !!!!!!!!!!!!! issue doesnt show up-->
+                <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content clearfix">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">×</span></button>
+                            <div class="modal-body">
+                                <h3 class="title">You are one step away from joining PicHub!</h3>
+                                <p class="description">Enter your Email & Password</p>
+                                <div class="form-group">
+                                    <span class="input-icon"><img src="./files/fa-user.png"/></span>
+                                    <input type="email" class="form-control" placeholder="Enter email">
+                                </div>
+                                <div class="form-group">
+                                    <span class="input-icon"><img src="./files/fa-key.png"/></span>
+                                    <input type="password" class="form-control" placeholder="Password">
+                                </div>
+                                <div class="form-group">
+                                  <span class="input-icon"><img src="./files/fa-key.png"/></span>
+                                  <input type="password" class="form-control" placeholder="Confirm password">
+                              </div>
+                                <div class="form-group checkbox">
+                                    <input type="checkbox">
+                                    <label>Remamber me</label>
+                                </div>
+                                <button class="btn" onclick="document.location='./pages/photos.html'">Register</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
 </html>

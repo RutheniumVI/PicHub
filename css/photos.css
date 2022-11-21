@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('../libraries/font.css');
 
 .imgDiv {
     width: 17vw;

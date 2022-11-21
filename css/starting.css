@@ -1,4 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('../libraries/font.css');
+
+.input-icon {
+    width: 5%;
+}
 
 .mainPage {
     height: 100vh;
@@ -313,17 +317,4 @@
           .modal-content .modal-body{
               padding: 60px 20px 40px !important;
           }
-      }
-      .bg{
-
-       
-          text-align:center;
-          padding:20px;
-          width:340px;
-          margin: 0 auto;
-        
-          /* Set the border and border image properties */
-          border:50px solid transparent;
-          border-image:url(https://www.w3resource.com/html-css-exercise/border.png) 50 50 round;
-        
       }
