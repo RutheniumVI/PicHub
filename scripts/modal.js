@@ -46,6 +46,7 @@ fileInput.onchange = function() {
 
 function clearModal() {
   previewImage.removeAttribute("crossOrigin")
+  img.removeAttribute("crossOrigin")
   previewImage.src = "../files/upload_placeholder.jpg"
   imageName.value = ""
   imageTags.value = ""
@@ -58,8 +59,9 @@ function getImageDataURL() {
   canvas.width = img.width;
   canvas.height = img.height;
   var ctx = canvas.getContext("2d");
-  ctx.drawImage(previewImage, 0, 0, previewImage.width, previewImage.height);
+  ctx.drawImage(img, 0, 0, img.width, img.height);
   previewImage.setAttribute('crossOrigin', 'Anonymous')
+  img.setAttribute('crossOrigin', 'Anonymous')
 
   return canvas.toDataURL("image/png")
 }
@@ -71,8 +73,9 @@ confirmBtn.onclick = function () {
     images = JSON.parse(localStorage.getItem("images"))
     let img =  {
         src: dataURL,
-        dateTaken: imageName.value,
+        name: imageName.value,
         dateUploaded:  new Date(imageDate.value),
+        dateTaken: new Date(),
         tags: getNewTagsList()
     }
     images.push(img)
