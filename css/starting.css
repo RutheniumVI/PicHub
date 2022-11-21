@@ -68,7 +68,7 @@
           color:rgb(3, 3, 3);
       top:-10%;
       left:80%;
-      width:90px;
+      width:150px;
       height:40px;
       position: absolute;
       z-index: 2;
@@ -78,12 +78,26 @@
       color:white;
       top:-10%;
       left:90%;
-      width:90px;
+      width: 150px;
       height:40px;
       position: absolute;
       z-index: 2;
       background: rgb(17, 16, 15); 
       }
+
+
+      .mbtn.help {
+        color:white;
+        top:-10%;
+        left:70%;
+        width:150px;
+        height:40px;
+        position: absolute;
+        z-index: 2;
+        background: rgb(17, 16, 15); 
+        }
+
+
 
 
       .header_d{
@@ -108,6 +122,22 @@
           box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
           display: block;
           transition: all 0.3s ease 0s;
+      }
+
+
+      .show-modal-t{
+        color: rgb(128, 49, 49);
+        background: linear-gradient(to right, #131314, #161a1c, #030b14);
+        font-size: 18px;
+        font-weight: 600;
+        text-transform: capitalize;
+        padding: 10px 15px;
+        margin: 200px auto 0;
+        border: none;
+        outline: none;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        display: block;
+        transition: all 0.3s ease 0s;
       }
       .mbtn {
           padding:0.6em 2em;
@@ -143,6 +173,13 @@
             }
       .show-modal:hover,
       .show-modal:focus{
+          color: #fff;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+          outline: none;
+      }
+
+      .show-modal-t:hover,
+      .show-modal-t:focus{
           color: #fff;
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
           outline: none;

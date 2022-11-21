@@ -9,13 +9,25 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
-                <input type="button" class="mbtn login" value="Need Help?" />
+            <button type="button" class="mbtn help show-modal btn-primary btn-lg">
+              Need Help?
+            </button>
           </li>
         </ul>
-        
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
-                <input type="button" class="mbtn signup"  value="Sign-up" onclick="document.location='./sign_up.html'" />
+              <button type="button" class="mbtn login show-modal btn-primary btn-lg" data-toggle="modal" data-target="#myModal1">
+                Login
+              </button>
+            </li>
+          </ul>
+
+          <!--sign up modal !!!!!!!!!!!!! issue doesnt show up-->
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <button type="button" class="mbtn signup show-modal-t btn-primary btn-lg" data-toggle="modal" data-target="#myModal2">
+                Sign up
+              </button>
             </li>
           </ul>
       </div>
@@ -48,14 +60,17 @@
       <h1 class="header_d">Save your Memories</h1>
       <div class="row">
           <div class="col-md-12">
+    
               <div class="modal-box"></div>
                   
-                  <button type="button" class="cbtn btn-primary btn-lg show-modal" data-toggle="modal" data-target="#myModal">
-                    Getting Started
+                  <button type="button" class="cbtn btn-primary btn-lg show-modal" data-toggle="modal" data-target="#myModal1">
+                    Get Started
                   </button>
   
                   <!-- Modal -->
-                  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <!--sign up modal !!!!!!!!!!!!! issue doesnt show up-->
+              
+                  <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                       <div class="modal-dialog" role="document">
                           <div class="modal-content clearfix">
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
@@ -79,13 +94,47 @@
                               </div>
                           </div>
                       </div>
+                      <!-- this modal is fine -->
+
+                      <div class="modal fade" id="myModal2"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content clearfix">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                <div class="modal-body">
+                                    <h3 class="title">You are one step away from joining</h3>
+                                    <p class="description">Login here Using Email & Password</p>
+                                    <div class="form-group">
+                                        <span class="input-icon"><i class="fa fa-user"></i></span>
+                                        <input type="email" class="form-control" placeholder="Enter email">
+                                    </div>
+                                    <div class="form-group">
+                                        <span class="input-icon"><i class="fas fa-key"></i></span>
+                                        <input type="password" class="form-control" placeholder="Password">
+                                    </div>
+                                    <div class="form-group checkbox">
+                                        <input type="checkbox">
+                                        <label>Remamber me</label>
+                                    </div>
+                                    <a href="" class="forgot-pass">Forgot Password?</a>
+                                    <button class="btn" onclick="document.location='./photos.html'">Register</button>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                      
+
+
                   </div>
               </div>
           </div>
       </div>
     </div>
 </div>
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js">
+</script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 </body>
 </html>
