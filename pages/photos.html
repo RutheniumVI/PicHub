@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="../css/photos.css">
 
 <script>
-    keyword = ''
+    keyword = new URLSearchParams(window.location.search).get('search')
     tags = {}
     enableTags = false
     images = JSON.parse(localStorage.getItem("images"))
@@ -40,7 +40,7 @@
         var currGallery = null;
         images.forEach(img => {
             var displayImage = false;
-            if (keyword.length > 0){
+            if (keyword && keyword.length > 0){
                 if (img.tags.includes(keyword.toLowerCase())){
                     displayImage = true
                 }
